@@ -1,0 +1,1 @@
+-- In-game. Client Folder is under the MainModule.lua script. (Core/MainModule.lua . OH and there is no Core Folder. Everything is under MainModule.lua ingame.)
