@@ -1,0 +1,110 @@
+local Library = loadstring(game:HttpGet("https://pastebin.com/raw/CNUYCig4"))()
+do    
+    local window          = Library:New({Name = "ISISHOOK", Description = "[kill the newcomers!]"});
+    local combat          = window:AddTab("Combat");
+    local left_combat     = combat:AddColumn("Left");
+    local right_combat    = combat:AddColumn("Right");
+    
+    local movement        = window:AddTab("Movement");
+    local left_movement   = movement:AddColumn("Left");
+    local right_movement  = movement:AddColumn("Right");
+    
+    local visuals         = window:AddTab("Visuals");
+    local left_visuals    = visuals:AddColumn("Left");
+    local right_visuals   = visuals:AddColumn("Right");
+    
+    local miscs           = window:AddTab("Miscellaneous");
+    local left_miscs      = miscs:AddColumn("Left");
+    local right_miscs     = miscs:AddColumn("Right");
+    
+    local settings        = window:AddTab("Settings");
+    local left_settings   = settings:AddColumn("Left");
+    local right_settings  = settings:AddColumn("Right");
+
+    --// legitbot
+    do
+        local aim_assist_s = left_combat:AddSection("Combat"); 
+        local aim_assist_section = aim_assist_s:AddSubsec("Aim Assist");
+		local silent_aim_s = right_combat:AddSection("Silent Aim");
+		local silent_aim_section = silent_aim_s:AddSubsec("Silent Aim");
+
+		--// aim assist
+		do
+			aim_assist_section:AddToggle({text = "Enabled", flag = "aim_assist_enabled"})
+            	:AddKeybind({name = "Aim Assist Keybind", flag = "aim_assist_keybind", hold = true});
+			aim_assist_section:AddDropdown({text = "Type", flag = "aim_assist_type", multi = false, value = "Mouse", values = {"Mouse", "Camera"}});
+			aim_assist_section:AddToggle({text = "Wall Check", flag = "aim_assist_wallcheck"});
+			aim_assist_section:AddToggle({text = "Prediction", flag = "aim_assist_prediction"});
+			aim_assist_section:AddDropdown({text = "Body Part", flag = "aim_assist_body_part", multi = false, value = "Head", values = {"Head", "Torso"}});
+        	aim_assist_section:AddSlider({text = "Smoothing", flag = "aim_assist_smoothing", min = 1, max = 100, value = 10, suffix = "%"});
+        	aim_assist_section:AddToggle({text = "Field Of View", flag = "aim_assist_fov_enabled"});
+        	aim_assist_section:AddSlider({text = "Field Of View Radius", flag = "aim_assist_fov_radius", min = 50, max = 800, value = 50, suffix = "%"});
+        	aim_assist_section:AddColor({text = "Field Of View Color", flag = "aim_asssist_fov_color", transparency = 1});
+        	aim_assist_section:AddToggle({text = "Line", flag = "aim_assist_line_enabled"});
+        	aim_assist_section:AddColor({text = "Line Color", flag = "aim_asssist_line_color", transparency = 1});
+        	aim_assist_section:AddSlider({text = "Line Thickness", flag = "aim_assist_line_thickness", min = 1, max = 5, value = 1, suffix = "%"});
+			aim_assist_section:AddToggle({text = "Info Text", flag = "aim_assist_info_text_enabled"})
+				:AddColor({text = "Info Text Color", flag = "aim_assist_info_text_color", transparency = 1});
+			aim_assist_section:AddSlider({text = "Info Text Y Offset", flag = "aim_assist_info_text_y_offset", min = -50, max = 50, value = 10, suffix = "px"});
+			aim_assist_section:AddSlider({text = "Info Text Font Size", flag = "aim_assist_info_text_font_size", min = 5, max = 20, value = 9, suffix = "px"});
+		end;
+
+		--// silent aim
+		do
+			silent_aim_section:AddToggle({text = "Enabled", flag = "silent_aim_enabled"})
+			silent_aim_section:AddToggle({text = "Wall Check", flag = "silent_aim_wallcheck"});
+			silent_aim_section:AddToggle({text = "Prediction", flag = "silent_aim_prediction"});
+			silent_aim_section:AddToggle({text = "Auto Shoot", flag = "silent_aim_auto_shoot"});
+			silent_aim_section:AddDropdown({text = "Body Part", flag = "silent_aim_body_part", multi = false, value = "Head", values = {"Head", "Torso"}});
+        	silent_aim_section:AddToggle({text = "Field Of View", flag = "silent_aim_fov_enabled"});
+        	silent_aim_section:AddSlider({text = "Field Of View Radius", flag = "silent_aim_fov_radius", min = 50, max = 800, value = 50, suffix = "%"});
+        	silent_aim_section:AddColor({text = "Field Of View Color", flag = "aim_asssist_fov_color", transparency = 1});
+        	silent_aim_section:AddToggle({text = "Line", flag = "silent_aim_line_enabled"});
+        	silent_aim_section:AddToggle({text = "Line Barrel", flag = "silent_aim_line_barrel"});
+        	silent_aim_section:AddColor({text = "Line Color", flag = "aim_asssist_line_color", transparency = 1});
+        	silent_aim_section:AddSlider({text = "Line Thickness", flag = "silent_aim_line_thickness", min = 1, max = 5, value = 1, suffix = "%"});
+			silent_aim_section:AddToggle({text = "Info Text", flag = "silent_aim_info_text_enabled"})
+				:AddColor({text = "Info Text Color", flag = "silent_aim_info_text_color", transparency = 1});
+			silent_aim_section:AddSlider({text = "Info Text Y Offset", flag = "silent_aim_info_text_y_offset", min = -50, max = 50, value = 10, suffix = "px"});
+			silent_aim_section:AddSlider({text = "Info Text Font Size", flag = "silent_aim_info_text_font_size", min = 5, max = 20, value = 9, suffix = "px"});
+		end;
+    end;
+
+	--// visuals
+	do
+		local esp_s = left_visuals:AddSection("ESP");
+		local esp_section = esp_s:AddSubsec("ESP");
+		local third_person_s = right_visuals:AddSection("Third Person");
+		local third_person_section = third_person_s:AddSubsec("Third Person");
+
+		--// esp
+		do
+			esp_section:AddToggle({text = "Enabled", flag = "esp_enabled"});
+			esp_section:AddToggle({text = "Boxes", flag = "boxes_enabled"})
+				:AddColor({text = "Boxes Color", flag = "boxes_color", transparency = 0});
+			esp_section:AddToggle({text = "Names", flag = "names_esp_enabled"})
+				:AddColor({text = "Names Color", flag = "names_esp_color", transparency = 1});
+			esp_section:AddToggle({text = "Healthbar", flag = "healthbar_esp_enabled"})
+				:AddColor({text = "Healthbar Color", flag = "healthbar_esp_color", transparency = 1});
+			esp_section:AddToggle({text = "Healthtext", flag = "healthtext_esp_enabled"})
+				:AddColor({text = "Healthtext Color", flag = "healthtext_esp_color", transparency = 1});
+			esp_section:AddToggle({text = "Use Display Names", flag = "names_esp_use_display"});
+		end;
+
+		--// third person
+		do
+			third_person_section:AddToggle({text = "Enabled", flag = "third_person_enabled"})
+				:AddKeybind({text = "Third Person Keybind", sync = true});
+			third_person_section:AddToggle({text = "Instant Replication", flag = "third_person_insta_replication"});
+			third_person_section:AddSlider({text = "Distance", flag = "third_person_distance", min = 1, value = 10, max = 20});
+		end;
+	end;
+
+	--// misc
+	do
+		local misc_s = left_miscs:AddSection("Misc");
+		local misc_section = misc_s:AddSubsec("Misc");
+
+		misc_section:AddToggle({text = "No Falldamage", flag = "no_fall_damage"});
+	end;
+end;
